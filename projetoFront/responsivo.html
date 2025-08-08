@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Design Responsivo</title>
+    <!-- Para mobile, o design deve ser na vertical -->
+
+     <style>
+        /*Estilos na base Mobile First*/
+        body{
+            font-family:Arial, Helvetica, sans-serif; /*Não é bom mudar de fonte muitas vezes*/
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        /*Para ser responsivo, a página deve seguir um padrão*/
+        header{
+            background-color: rgb(82, 43, 146);
+            color: #f5f5f5;
+            padding: 20px; /*Espaçamento entre elementos*/
+            text-align: center;
+        }
+
+        .container{
+            padding: 20px;
+        }
+
+        .card{
+            background-color:#f5f5f5;
+            border-radius:8px;
+            box-shadow:0 2px 5px rgba(0,0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        
+        /*Media Queries: Adapta o layout para telas maiores */
+        @media (min-width: 768px)/*Padrão (tamanho do tablet) para adaptar telas maiores, para não ficar esticado/quebrar*/{
+            .cards{
+                display: flex; /* card ficam na vertical na tela pequena, horizontal em telas maiores*/
+                gap: 20px; /*Espaçamento entre esses elementos*/
+            }
+            .card{
+                flex: 1; 
+            }
+        } 
+
+        /*Conatiner Queries: adapta os elelementos com base no tamanho do container*/
+        @container(min-width: 600px){
+            .card h2{
+                font-size: 2rem;
+                color: black;
+            }
+        }
+
+        /*Definindo o container para ativar container queries*/
+        .card{
+            container-type: inline-size;
+        }
+     </style>
+</head>
+<body>
+    
+    <header>
+        <h1>Design Responsivo</h1>        
+    </header>
+
+    <div class="container">
+        <p>Este exemplo mostra o exemplo do Mobile First; Media Queries e Container Queries.</p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h2>Card 1</h2>
+                <p>Conteúdo responsivo adaptado ao tamanho da tela.</p>
+            </div>
+              <div class="card">
+                <h2>Card 2</h2>
+                <p>Observe o comportamento ao redimensionar o navegador.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
