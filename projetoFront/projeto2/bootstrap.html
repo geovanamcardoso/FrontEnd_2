@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv = " Compatível com X-UA " content = " ie=edge " />   
+
+    <title>Bootstrap</title>
+    <!-- Bootstrap é um framework para frontend, é open source -->
+    <!-- Os materiais do bootstrap já são responsivos, são baseados em mobile first. Com ele não precisamos criar 
+     componentes do zero -->
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel = "stylesheet " href = " https://cdn.jsdelivr.net/npm/cdbootstrap/css/cdb.min.css ">   
+    <script src= " https://cdn.jsdelivr.net/npm/cdbootstrap/js/cdb.min.js " > </script>
+    <script src= " https://cdn.jsdelivr.net/npm/cdbootstrap/js/bootstrap.min.js " ></script>
+    <script src=" https://kit.fontawesome.com/9d1d9a82d2.js" crossorigin = "anonymous"> </script>
+
+    <style>
+  .chart-container {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+  }
+</style>
+</head>
+<body>
+   
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Monitoramento de Sistemas</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Servidores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Alertas</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#">Configurações</a>
+        </li>
+     </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="row row-cols-1  row-cols-md-4">
+  <div class="col">
+    <div class="card">     
+      <div class="card-body">
+        <h5 class="card-title">Uso de CPU</h5>
+        <p class="card-text">65%</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">    
+      <div class="card-body">
+        <h5 class="card-title">Uso de memória</h5>
+        <p class="card-text">8GB</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Espaço em Disco</h5>
+        <p class="card-text">500GB</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+<div class="card chart-container">
+  <canvas id="chart"></canvas>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Data/Hora</th>
+      <th scope="col">Servidor</th>
+      <th scope="col">Mensagem</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
+    </tr>
+  </tbody>
+</table>
+
+    <!-- JS (opcional, para componentes interativos) -->
+   <script script src = " https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js " > </script>
+   <script>
+      const ctx = document.getElementById("chart").getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["Consumo da CPU", "Tráfego em Rede"],
+          datasets: [{
+            label: 'Dados de Uso',
+            backgroundColor: 'rgba(161, 198, 247, 1)',
+            borderColor: 'rgb(47, 128, 237)',
+            data: [69, 49],
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+              }
+            }]
+          }
+        },
+      });
+</script>
+
+</body>
+</html>
